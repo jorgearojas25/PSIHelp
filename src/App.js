@@ -3,15 +3,16 @@
  * @flow strict-local
  */
 
-import React from 'react'
-import { View, Text } from 'react-native'
+import React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import MainApp from './Screens/index';
 
 const App = () => {
   return (
-    <View>
-      <Text>Soy la app!</Text>
-    </View>
-  )
-}
+    <NavigationContainer>
+      <MainApp />
+    </NavigationContainer>
+  );
+};
 
-export default App
+export default App;
