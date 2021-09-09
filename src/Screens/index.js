@@ -4,11 +4,11 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import theme from '../styles/theme';
 
 // components
+import HomeScreen from './Home';
 import LoginScreen from './Login';
 import OnBoardingScreen from './OnBoarding';
 import RegisterScreen from './Register';
 import TabBar from '../Components/TabBar';
-import TabBarIcon from '../Components/TabBarIcon';
 
 const MainApp = () => {
   const Tab = createBottomTabNavigator();
@@ -19,7 +19,7 @@ const MainApp = () => {
       screenOptions={{headerShown: false, tabBarShowLabel: false}}>
       <Tab.Screen
         name="Login"
-        component={LoginScreen}
+        component={HomeScreen}
         options={{
           myIcon: {color: theme.colors.ternary, name: 'home', size: 28},
         }}
