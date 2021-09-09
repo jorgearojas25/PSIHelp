@@ -1,10 +1,17 @@
 import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
+import styles from '../../styles';
 import TabBarIcon from '../TabBarIcon';
 
 const TabBar = ({state, descriptors, navigation}) => {
   return (
-    <View style={{flexDirection: 'row', height: 74}}>
+    <View
+      style={{
+        flexDirection: 'row',
+        height: 74,
+        borderTopRightRadius: 15,
+        borderTopLeftRadius: 15,
+      }}>
       {state.routes.map((route, index) => {
         const {options} = descriptors[route.key];
         const label =

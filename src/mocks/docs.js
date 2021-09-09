@@ -8,6 +8,7 @@ const docs = [
     isFav: true,
     dates: 234234,
     specialty: 'Terapeuta',
+    price: 35000,
   },
   {
     id: 2,
@@ -18,6 +19,7 @@ const docs = [
     isFav: false,
     dates: 234234,
     specialty: 'Psicologia',
+    price: 35000,
   },
   {
     id: 3,
@@ -28,6 +30,7 @@ const docs = [
     isFav: false,
     dates: 234234,
     specialty: 'Terapeuta',
+    price: 35000,
   },
 ];
 

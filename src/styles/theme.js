@@ -23,6 +23,11 @@ const fonts = StyleSheet.create({
     lineHeight: 15,
     color: palette.contrast,
   },
+  font12title: {
+    fontSize: 12,
+    lineHeight: 15,
+    fontWeight: 'bold',
+  },
   font20White: {
     fontSize: 20,
     lineHeight: 24,

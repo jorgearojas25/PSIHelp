@@ -8,6 +8,12 @@ const components = StyleSheet.create({
     borderRadius: 6,
     backgroundColor: theme.colors.white,
   },
+  cardSmall: {
+    width: 101,
+    height: 135,
+    borderRadius: 6,
+    backgroundColor: theme.colors.white,
+  },
   tabBarIcon: {
     width: 40,
     height: 40,
@@ -17,7 +23,7 @@ const components = StyleSheet.create({
   },
   homeHeader: {
     width: '100%',
-    height: '20%',
+    height: '18%',
     backgroundColor: theme.colors.primary,
     borderBottomLeftRadius: 15,
     borderBottomRightRadius: 15,

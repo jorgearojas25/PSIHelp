@@ -3,7 +3,14 @@ import {View, Text, FlatList, Pressable} from 'react-native';
 import styles from '../../styles';
 import Card from '../Card';
 
-const CardList = ({isHorizontal, list, listName, tipeView, customStyle}) => {
+const CardList = ({
+  isHorizontal,
+  list,
+  listName,
+  tipeView,
+  customStyle,
+  price,
+}) => {
   const keyExtractor = React.useCallback(item => {
     item.id;
   }, []);
@@ -17,6 +24,7 @@ const CardList = ({isHorizontal, list, listName, tipeView, customStyle}) => {
         isFav={item.item.isFav}
         name={item.item.name}
         photo={item.item.photo}
+        price={item.item.price}
         stars={item.item.stars}
         specialty={item.item.specialty}
         typeView={tipeView}

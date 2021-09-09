@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, View, Text, TextInput, FlatList} from 'react-native';
+import {Image, View, Text, TextInput, FlatList, ScrollView} from 'react-native';
 import CardList from '../../Components/CardList';
 import SpecialtyIcon from '../../Components/SpecialtyIcon';
 import {config} from '../../config';
@@ -14,7 +14,7 @@ const HomeScreen = () => {
     {id: 13, iconName: 'quora', backgroundColor: '#FF484C'},
   ];
   return (
-    <View style={{flex: 1}}>
+    <ScrollView style={{flex: 1}}>
       <View
         style={[
           styles.components.homeHeader,
@@ -77,14 +77,21 @@ const HomeScreen = () => {
           keyExtractor={item => item.id}
         />
         <CardList
-          customStyle={{transform: [{translateY: -55}]}}
           isHorizontal={true}
           list={docs}
           listName={'Top terapeutas'}
           tipeView={config.CARD_TYPES.large}
         />
+        <View style={{width: '100%', marginTop: 20, marginBottom: 90}}>
+          <CardList
+            isHorizontal={true}
+            list={docs}
+            listName={'Terapeutas disponibles'}
+            tipeView={config.CARD_TYPES.small}
+          />
+        </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 

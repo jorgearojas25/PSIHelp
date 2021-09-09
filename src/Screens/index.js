@@ -16,7 +16,11 @@ const MainApp = () => {
   return (
     <Tab.Navigator
       tabBar={props => <TabBar {...props} />}
-      screenOptions={{headerShown: false, tabBarShowLabel: false}}>
+      screenOptions={{
+        headerShown: false,
+        tabBarShowLabel: false,
+        tabBarStyle: {backgroundColor: 'transparent'},
+      }}>
       <Tab.Screen
         name="Login"
         component={HomeScreen}

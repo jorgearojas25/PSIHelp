@@ -4,46 +4,48 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import {config} from '../../config';
 import styles from '../../styles';
 
-const Card = ({typeView, id, photo, name, stars, isFav, dates, specialty}) => {
-  const docPhoto = React.useMemo(() => {
-    if (typeView === config.CARD_TYPES.large) {
-      return (
-        <Image
-          source={{uri: photo}}
-          style={{
-            width: '100%',
-            height: '70%',
-            borderTopLeftRadius: 6,
-            borderTopRightRadius: 6,
-          }}
-        />
-      );
-    }
-  }, [typeView, photo]);
+// components
+import CardLarge from './CardLarge';
+import CardSmall from './CardSmall';
 
-  const starsShown = React.useMemo(() => {
-    if (typeView === config.CARD_TYPES.large) {
-      return Array(5)
-        .fill({}, 0, 5)
-        .map((st, index) =>
-          index < stars ? (
-            <Icon
-              style={{width: 12}}
-              name="star"
-              color={styles.theme.colors.stars}
-              size={12}
-            />
-          ) : (
-            <Icon
-              style={{width: 12}}
-              name="star"
-              color={styles.theme.colors.contrast}
-              size={12}
-            />
-          ),
-        );
-    }
-  }, [stars, typeView]);
+const Card = ({
+  typeView,
+  id,
+  photo,
+  name,
+  stars,
+  isFav,
+  dates,
+  specialty,
+  price,
+}) => {
+  if (config.CARD_TYPES.large === typeView) {
+    return (
+      <CardLarge
+        id={id}
+        key={id}
+        name={name}
+        photo={photo}
+        specialty={specialty}
+        stars={stars}
+      />
+    );
+  }
+
+  if (config.CARD_TYPES.small === typeView) {
+    return (
+      <CardSmall
+        id={id}
+        isFav={isFav}
+        key={id}
+        name={name}
+        photo={photo}
+        specialty={specialty}
+        stars={stars}
+        price={price}
+      />
+    );
+  }
 
   return (
     <View style={[styles.components.cardLarge]}>
