@@ -1,20 +1,50 @@
 import React from 'react';
-import {View, Text} from 'react-native';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import LoginScreen from "./Login";
-import OnBoardingScreen from "./OnBoarding";
-import RegisterScreen from './Register';
+import {View, Text, TouchableOpacity} from 'react-native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import theme from '../styles/theme';
 
+// components
+import LoginScreen from './Login';
+import OnBoardingScreen from './OnBoarding';
+import RegisterScreen from './Register';
+import TabBar from '../Components/TabBar';
+import TabBarIcon from '../Components/TabBarIcon';
 
 const MainApp = () => {
-
-    const Tab = createMaterialTopTabNavigator();
+  const Tab = createBottomTabNavigator();
 
   return (
-    <Tab.Navigator>
-        <Tab.Screen name="Login" component={LoginScreen}/>
-        <Tab.Screen name="Register" component={RegisterScreen}/>
-        <Tab.Screen name="OnBoarding" component={OnBoardingScreen}/>
+    <Tab.Navigator
+      tabBar={props => <TabBar {...props} />}
+      screenOptions={{headerShown: false, tabBarShowLabel: false}}>
+      <Tab.Screen
+        name="Login"
+        component={LoginScreen}
+        options={{
+          myIcon: {color: theme.colors.ternary, name: 'home', size: 28},
+        }}
+      />
+      <Tab.Screen
+        name="Register"
+        component={RegisterScreen}
+        options={{
+          myIcon: {color: theme.colors.ternary, name: 'heart', size: 28},
+        }}
+      />
+      <Tab.Screen
+        name="OnBoarding"
+        component={OnBoardingScreen}
+        options={{
+          myIcon: {color: theme.colors.ternary, name: 'book', size: 28},
+        }}
+      />
+      <Tab.Screen
+        name="Te"
+        component={OnBoardingScreen}
+        options={{
+          myIcon: {color: theme.colors.ternary, name: 'comment', size: 28},
+        }}
+      />
     </Tab.Navigator>
   );
 };
