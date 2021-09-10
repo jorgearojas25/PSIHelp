@@ -7,6 +7,7 @@ import styles from '../../styles';
 // components
 import CardLarge from './CardLarge';
 import CardSmall from './CardSmall';
+import CardFull from './CardFull';
 
 const Card = ({
   typeView,
@@ -43,6 +44,21 @@ const Card = ({
         specialty={specialty}
         stars={stars}
         price={price}
+      />
+    );
+  }
+  if (config.CARD_TYPES.full === typeView) {
+    return (
+      <CardFull
+        id={id}
+        isFav={isFav}
+        key={id}
+        name={name}
+        photo={photo}
+        specialty={specialty}
+        stars={stars}
+        price={price}
+        dates={dates}
       />
     );
   }

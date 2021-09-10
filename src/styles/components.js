@@ -8,6 +8,16 @@ const components = StyleSheet.create({
     borderRadius: 6,
     backgroundColor: theme.colors.white,
   },
+  cardFull: {
+    width: '100%',
+    height: 105,
+    borderRadius: 6,
+    backgroundColor: theme.colors.white,
+    marginBottom: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 10,
+  },
   cardSmall: {
     width: 101,
     height: 135,

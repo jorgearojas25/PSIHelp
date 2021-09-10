@@ -6,6 +6,7 @@ import theme from '../styles/theme';
 // components
 import HomeScreen from './Home';
 import LoginScreen from './Login';
+import SearchResultsScreen from './SearchResults';
 import OnBoardingScreen from './OnBoarding';
 import RegisterScreen from './Register';
 import TabBar from '../Components/TabBar';
@@ -30,7 +31,7 @@ const MainApp = () => {
       />
       <Tab.Screen
         name="Register"
-        component={RegisterScreen}
+        component={SearchResultsScreen}
         options={{
           myIcon: {color: theme.colors.ternary, name: 'heart', size: 28},
         }}

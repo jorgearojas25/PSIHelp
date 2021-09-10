@@ -1,6 +1,7 @@
 import {StyleSheet} from 'react-native';
 const palette = {
   primary: '#8FBC94',
+  primaryOpacity: '#8FBC9480',
   secondary: '#72A18E',
   ternary: '#548687',
   contrast: '#556386',
@@ -23,6 +24,11 @@ const fonts = StyleSheet.create({
     lineHeight: 15,
     color: palette.contrast,
   },
+  font14Contrast: {
+    fontSize: 14,
+    lineHeight: 15,
+    color: palette.contrast,
+  },
   font12title: {
     fontSize: 12,
     lineHeight: 15,
@@ -32,6 +38,16 @@ const fonts = StyleSheet.create({
     fontSize: 20,
     lineHeight: 24,
     color: palette.fontsContrast,
+  },
+  font14White: {
+    fontSize: 14,
+    lineHeight: 24,
+    color: palette.fontsContrast,
+  },
+  font14Off: {
+    fontSize: 14,
+    lineHeight: 24,
+    color: palette.contrast,
   },
   font24WhiteBold: {
     fontWeight: 'bold',

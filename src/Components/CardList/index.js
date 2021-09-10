@@ -9,7 +9,7 @@ const CardList = ({
   listName,
   tipeView,
   customStyle,
-  price,
+  seeOption,
 }) => {
   const keyExtractor = React.useCallback(item => {
     item.id;
@@ -53,9 +53,11 @@ const CardList = ({
           customStyle,
         ]}>
         <Text style={styles.theme.fonts.font18Bold}>{listName}</Text>
-        <Pressable>
-          <Text style={styles.theme.fonts.font12}>Ver todos</Text>
-        </Pressable>
+        {seeOption && (
+          <Pressable>
+            <Text style={styles.theme.fonts.font12}>Ver todos</Text>
+          </Pressable>
+        )}
       </View>
       <FlatList
         style={customStyle}
@@ -65,6 +67,7 @@ const CardList = ({
         keyExtractor={keyExtractor}
         ItemSeparatorComponent={renderItemSeparator}
         showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
       />
     </>
   );

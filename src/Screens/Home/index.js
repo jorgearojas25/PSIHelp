@@ -14,7 +14,7 @@ const HomeScreen = () => {
     {id: 13, iconName: 'quora', backgroundColor: '#FF484C'},
   ];
   return (
-    <ScrollView style={{flex: 1}}>
+    <ScrollView style={{flex: 1}} showsVerticalScrollIndicator={false}>
       <View
         style={[
           styles.components.homeHeader,
@@ -81,6 +81,7 @@ const HomeScreen = () => {
           list={docs}
           listName={'Top terapeutas'}
           tipeView={config.CARD_TYPES.large}
+          seeOption
         />
         <View style={{width: '100%', marginTop: 20, marginBottom: 90}}>
           <CardList
@@ -88,6 +89,7 @@ const HomeScreen = () => {
             list={docs}
             listName={'Terapeutas disponibles'}
             tipeView={config.CARD_TYPES.small}
+            seeOption
           />
         </View>
       </View>
