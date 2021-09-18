@@ -14,55 +14,76 @@
 12    <uses-permission android:name="android.permission.INTERNET" />
 12-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\main\AndroidManifest.xml:4:5-67
 12-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\main\AndroidManifest.xml:4:22-64
-13    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+13    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- Required by older versions of Google Play services to create IID tokens -->
 13-->[com.facebook.flipper:flipper:0.93.0] C:\Users\jorge_udk1zlb\.gradle\caches\transforms-3\8cf55bdce16a002612f05f30a64a017a\transformed\jetified-flipper-0.93.0\AndroidManifest.xml:16:5-76
 13-->[com.facebook.flipper:flipper:0.93.0] C:\Users\jorge_udk1zlb\.gradle\caches\transforms-3\8cf55bdce16a002612f05f30a64a017a\transformed\jetified-flipper-0.93.0\AndroidManifest.xml:16:22-73
-14
-15    <application
-15-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\main\AndroidManifest.xml:6:5-24:19
-16        android:name="com.psihelp.MainApplication"
-16-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\main\AndroidManifest.xml:7:7-38
-17        android:allowBackup="false"
-17-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\main\AndroidManifest.xml:11:7-34
-18        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-18-->[androidx.core:core:1.6.0] C:\Users\jorge_udk1zlb\.gradle\caches\transforms-3\d9b71328e8ba86dc125344804cb6eb44\transformed\core-1.6.0\AndroidManifest.xml:24:18-86
-19        android:debuggable="true"
-20        android:icon="@mipmap/ic_launcher"
-20-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\main\AndroidManifest.xml:9:7-41
-21        android:label="@string/app_name"
-21-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\main\AndroidManifest.xml:8:7-39
-22        android:roundIcon="@mipmap/ic_launcher_round"
-22-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\main\AndroidManifest.xml:10:7-52
-23        android:theme="@style/AppTheme"
-23-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\main\AndroidManifest.xml:12:7-38
-24        android:usesCleartextTraffic="true" >
-24-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\debug\AndroidManifest.xml:8:9-44
-25        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
-25-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\debug\AndroidManifest.xml:11:9-86
-25-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\debug\AndroidManifest.xml:11:19-83
-26        <activity
-26-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\main\AndroidManifest.xml:13:7-23:18
-27            android:name="com.psihelp.MainActivity"
-27-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\main\AndroidManifest.xml:14:9-37
-28            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
-28-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\main\AndroidManifest.xml:16:9-86
-29            android:label="@string/app_name"
-29-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\main\AndroidManifest.xml:15:9-41
-30            android:launchMode="singleTask"
-30-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\main\AndroidManifest.xml:17:9-40
-31            android:windowSoftInputMode="adjustResize" >
-31-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\main\AndroidManifest.xml:18:9-51
-32            <intent-filter>
-32-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\main\AndroidManifest.xml:19:9-22:25
-33                <action android:name="android.intent.action.MAIN" />
-33-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\main\AndroidManifest.xml:20:13-65
-33-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\main\AndroidManifest.xml:20:21-62
-34
-35                <category android:name="android.intent.category.LAUNCHER" />
-35-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\main\AndroidManifest.xml:21:13-73
-35-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\main\AndroidManifest.xml:21:23-70
-36            </intent-filter>
-37        </activity>
-38    </application>
-39
-40</manifest>
+14    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+14-->[com.google.android.gms:play-services-iid:17.0.0] C:\Users\jorge_udk1zlb\.gradle\caches\transforms-3\d79f26234d7ac71a1e5300d5e788e439\transformed\jetified-play-services-iid-17.0.0\AndroidManifest.xml:23:5-82
+14-->[com.google.android.gms:play-services-iid:17.0.0] C:\Users\jorge_udk1zlb\.gradle\caches\transforms-3\d79f26234d7ac71a1e5300d5e788e439\transformed\jetified-play-services-iid-17.0.0\AndroidManifest.xml:23:22-79
+15    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+15-->[com.android.installreferrer:installreferrer:1.1.2] C:\Users\jorge_udk1zlb\.gradle\caches\transforms-3\88e2a49dcbb25c5edb3bf68dcf66b6d8\transformed\jetified-installreferrer-1.1.2\AndroidManifest.xml:9:5-110
+15-->[com.android.installreferrer:installreferrer:1.1.2] C:\Users\jorge_udk1zlb\.gradle\caches\transforms-3\88e2a49dcbb25c5edb3bf68dcf66b6d8\transformed\jetified-installreferrer-1.1.2\AndroidManifest.xml:9:22-107
+16
+17    <application
+17-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\main\AndroidManifest.xml:6:5-24:19
+18        android:name="com.psihelp.MainApplication"
+18-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\main\AndroidManifest.xml:7:7-38
+19        android:allowBackup="false"
+19-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\main\AndroidManifest.xml:11:7-34
+20        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+20-->[androidx.core:core:1.6.0] C:\Users\jorge_udk1zlb\.gradle\caches\transforms-3\d9b71328e8ba86dc125344804cb6eb44\transformed\core-1.6.0\AndroidManifest.xml:24:18-86
+21        android:debuggable="true"
+22        android:icon="@mipmap/ic_launcher"
+22-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\main\AndroidManifest.xml:9:7-41
+23        android:label="@string/app_name"
+23-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\main\AndroidManifest.xml:8:7-39
+24        android:roundIcon="@mipmap/ic_launcher_round"
+24-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\main\AndroidManifest.xml:10:7-52
+25        android:theme="@style/AppTheme"
+25-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\main\AndroidManifest.xml:12:7-38
+26        android:usesCleartextTraffic="true" >
+26-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\debug\AndroidManifest.xml:8:9-44
+27        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+27-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\debug\AndroidManifest.xml:11:9-86
+27-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\debug\AndroidManifest.xml:11:19-83
+28        <activity
+28-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\main\AndroidManifest.xml:13:7-23:18
+29            android:name="com.psihelp.MainActivity"
+29-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\main\AndroidManifest.xml:14:9-37
+30            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
+30-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\main\AndroidManifest.xml:16:9-86
+31            android:label="@string/app_name"
+31-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\main\AndroidManifest.xml:15:9-41
+32            android:launchMode="singleTask"
+32-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\main\AndroidManifest.xml:17:9-40
+33            android:windowSoftInputMode="adjustResize" >
+33-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\main\AndroidManifest.xml:18:9-51
+34            <intent-filter>
+34-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\main\AndroidManifest.xml:19:9-22:25
+35                <action android:name="android.intent.action.MAIN" />
+35-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\main\AndroidManifest.xml:20:13-65
+35-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\main\AndroidManifest.xml:20:21-62
+36
+37                <category android:name="android.intent.category.LAUNCHER" />
+37-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\main\AndroidManifest.xml:21:13-73
+37-->C:\Users\jorge_udk1zlb\Documents\Repos\PSIHelp\android\app\src\main\AndroidManifest.xml:21:23-70
+38            </intent-filter>
+39        </activity>
+40        <activity
+40-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\jorge_udk1zlb\.gradle\caches\transforms-3\c099f34bb597d03b4b670af755f47f98\transformed\jetified-play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
+41            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+41-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\jorge_udk1zlb\.gradle\caches\transforms-3\c099f34bb597d03b4b670af755f47f98\transformed\jetified-play-services-base-17.0.0\AndroidManifest.xml:24:13-79
+42            android:exported="false"
+42-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\jorge_udk1zlb\.gradle\caches\transforms-3\c099f34bb597d03b4b670af755f47f98\transformed\jetified-play-services-base-17.0.0\AndroidManifest.xml:25:13-37
+43            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+43-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\jorge_udk1zlb\.gradle\caches\transforms-3\c099f34bb597d03b4b670af755f47f98\transformed\jetified-play-services-base-17.0.0\AndroidManifest.xml:26:13-72
+44
+45        <meta-data
+45-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\jorge_udk1zlb\.gradle\caches\transforms-3\d2aab5a9146bf1ef884137d70b855134\transformed\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
+46            android:name="com.google.android.gms.version"
+46-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\jorge_udk1zlb\.gradle\caches\transforms-3\d2aab5a9146bf1ef884137d70b855134\transformed\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
+47            android:value="@integer/google_play_services_version" />
+47-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\jorge_udk1zlb\.gradle\caches\transforms-3\d2aab5a9146bf1ef884137d70b855134\transformed\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
+48    </application>
+49
+50</manifest>
