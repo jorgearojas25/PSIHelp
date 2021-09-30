@@ -24,7 +24,15 @@ const UserForm = () => {
         password: password,
       }),
     );
+    clearForm();
   };
+
+  const clearForm = React.useCallback(() => {
+    setName('');
+    setEmail('');
+    setCelular('');
+    setPassword('');
+  }, []);
 
   React.useEffect(() => {
     if (user?._id !== undefined) {

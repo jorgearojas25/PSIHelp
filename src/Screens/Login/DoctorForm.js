@@ -25,7 +25,16 @@ const DoctorForm = () => {
         tarjetaProfesional: tarjeta,
       }),
     );
+    clearForm();
   };
+
+  const clearForm = React.useCallback(() => {
+    setName('');
+    setEmail('');
+    setCelular('');
+    setPassword('');
+    setTarjeta('');
+  }, []);
 
   React.useEffect(() => {
     if (user?._id !== undefined) {
