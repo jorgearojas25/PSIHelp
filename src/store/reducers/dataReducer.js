@@ -8,7 +8,7 @@ const GET_ESPECIALIDADES = 'psihelp/data/GET_ESPECIALIDADES';
 export default function reducer(state = {}, action = {}) {
   switch (action.type) {
     case GET_ESPECIALIDADES:
-      return {...state, especialides: action.payload};
+      return {...state, especialidades: action.payload};
     default:
       return state;
   }
@@ -19,6 +19,13 @@ export default function reducer(state = {}, action = {}) {
 export const getEspecialidades = () => dispatch => {
   fetch(config.API_URI + config.SERVICES.especialidad)
     .then(response => response.json())
-    .then(data => dispatch({type: GET_ESPECIALIDADES, payload: data}))
-    .error(err => console.warn(err));
+    .then(data =>
+      data.result || data.entities
+        ? dispatch({type: GET_ESPECIALIDADES, payload: data.entities})
+        : dispatch({type: GET_ESPECIALIDADES, payload: 'error'}),
+    )
+    .catch(err => {
+      console.log(`[Especialidades] ${err}`);
+      dispatch({type: SEARCH, payload: 'error'});
+    });
 };

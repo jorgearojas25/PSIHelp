@@ -6,6 +6,8 @@ const config = {
     doctor: '/doctor/',
     metodoPago: '/metodopago/',
     agenda: '/agenda/',
+    login: '/usuario/filter',
+    filter: '/usuario/filter',
   },
   CARD_TYPES: {large: 'CARD_LARGE', small: 'CARD_SMALL', full: 'CARD_FULL'},
 };

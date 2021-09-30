@@ -12,24 +12,33 @@ import Icon from 'react-native-vector-icons/AntDesign';
 import CardList from '../../../../Components/CardList';
 import SpecialtyIcon from '../../../../Components/SpecialtyIcon';
 import config from '../../../../config';
-import docs from '../../../../mocks/docs';
 import styles from '../../../../styles';
 import theme from '../../../../styles/theme';
+import {useSelector, useDispatch} from 'react-redux';
+import {cleanSearch, filter} from '../../../../store/reducers/searchReducer';
 
-const SearchResultsScreen = () => {
+const SearchResultsScreen = ({navigation}) => {
+  const dispatch = useDispatch();
   const [activeTagIndex, setActiveTagIndex] = React.useState(0);
-  const searchTags = [
-    {id: 1, name: 'Todos'},
-    {id: 2, name: 'Psiquiatria'},
-    {id: 3, name: 'Infantil'},
-    {id: 4, name: 'Pareja'},
-  ];
+  const {docs, especialidades} = useSelector(state => ({
+    docs: state.searchReducer.search,
+    especialidades: state.dataReducer.especialidades,
+  }));
+
+  const [filterWords, setFilterWords] = React.useState('');
+  const onSearch = React.useCallback(() => {
+    dispatch(
+      filter({Nombre: {$regex: filterWords, $options: 'i'}, IsDoctor: true}),
+    );
+    setFilterWords('');
+  }, [filterWords]);
+
   const tags = React.useMemo(
     () => (
       <FlatList
         horizontal
-        data={searchTags}
-        keyExtractor={item => item.id}
+        data={especialidades}
+        keyExtractor={item => item._id}
         renderItem={({item, index}) => (
           <Pressable
             style={
@@ -49,14 +58,17 @@ const SearchResultsScreen = () => {
                     borderRadius: 6,
                   }
             }
-            onPress={() => setActiveTagIndex(index)}>
+            onPress={() => {
+              dispatch(filter({Especialidades: item._id}));
+              setActiveTagIndex(index);
+            }}>
             <Text
               style={
                 activeTagIndex === index
                   ? styles.theme.fonts.font14White
                   : styles.theme.fonts.font14Off
               }>
-              {item.name}
+              {item.Nombre}
             </Text>
           </Pressable>
         )}
@@ -73,7 +85,11 @@ const SearchResultsScreen = () => {
       ]}>
       <View>
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <View
+          <Pressable
+            onPress={() => {
+              dispatch(cleanSearch());
+              navigation.goBack();
+            }}
             style={{
               backgroundColor: styles.theme.colors.white,
               width: 30,
@@ -88,7 +104,7 @@ const SearchResultsScreen = () => {
               color={styles.theme.colors.fontsDetails}
               size={15}
             />
-          </View>
+          </Pressable>
           <Text style={styles.theme.fonts.font18Bold}>Home</Text>
         </View>
         <View>
@@ -102,6 +118,9 @@ const SearchResultsScreen = () => {
               padding: 10,
               marginTop: 30,
             }}
+            value={filterWords}
+            onChangeText={text => setFilterWords(text)}
+            onSubmitEditing={onSearch}
           />
         </View>
         <View style={{marginTop: 15}}>{tags}</View>

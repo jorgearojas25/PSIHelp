@@ -18,15 +18,16 @@ const CardList = ({
   const renderItem = React.useCallback(
     item => (
       <Card
-        dates={item.item.dates}
-        id={item.item.id}
-        key={item.item.id}
-        isFav={item.item.isFav}
-        name={item.item.name}
-        photo={item.item.photo}
-        price={item.item.price}
-        stars={item.item.stars}
-        specialty={item.item.specialty}
+        item={item.item}
+        dates={item.item.Numero_citas}
+        id={item.item._id}
+        key={item.item._id}
+        isFav={false}
+        name={item.item.Nombre}
+        photo={item.item.Foto}
+        price={item.item.Costo}
+        stars={item.item.Calificaion}
+        specialty={'' || 'General'}
         typeView={tipeView}
       />
     ),

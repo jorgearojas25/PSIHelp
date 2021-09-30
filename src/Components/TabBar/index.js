@@ -43,6 +43,10 @@ const TabBar = ({state, descriptors, navigation}) => {
           });
         };
 
+        if (options.hide) {
+          return null;
+        }
+
         return (
           <TouchableOpacity
             accessibilityRole="button"

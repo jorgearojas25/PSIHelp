@@ -7,10 +7,16 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import MainApp from './Screens/index';
 
+// Redux
+import {Provider} from 'react-redux';
+import store from './store';
+
 const App = () => {
   return (
     <NavigationContainer>
-      <MainApp />
+      <Provider store={store({})}>
+        <MainApp />
+      </Provider>
     </NavigationContainer>
   );
 };

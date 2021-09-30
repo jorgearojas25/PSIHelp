@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import theme from '../../../styles/theme';
 
@@ -17,7 +18,8 @@ const CoreApp = () => {
         headerShown: false,
         tabBarShowLabel: false,
         tabBarStyle: {backgroundColor: 'transparent'},
-      }}>
+      }}
+      initialRouteName="Start">
       <Tab.Screen
         name="Start"
         component={HomeScreen}
@@ -27,6 +29,13 @@ const CoreApp = () => {
       />
       <Tab.Screen
         name="SearchResults"
+        component={SearchResultsScreen}
+        options={{
+          hide: true,
+        }}
+      />
+      <Tab.Screen
+        name="Favorites"
         component={SearchResultsScreen}
         options={{
           myIcon: {color: theme.colors.ternary, name: 'heart', size: 28},
