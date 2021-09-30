@@ -1,11 +1,11 @@
 import React from 'react';
 import {Image, View, Text, TextInput, FlatList, ScrollView} from 'react-native';
-import CardList from '../../Components/CardList';
-import SpecialtyIcon from '../../Components/SpecialtyIcon';
-import {config} from '../../config';
-import docs from '../../mocks/docs';
-import styles from '../../styles';
-import theme from '../../styles/theme';
+import CardList from '../../../../Components/CardList';
+import SpecialtyIcon from '../../../../Components/SpecialtyIcon';
+import config from '../../../../config';
+import docs from '../../../../mocks/docs';
+import styles from '../../../../styles';
+import theme from '../../../../styles/theme';
 
 const HomeScreen = () => {
   const categories = [

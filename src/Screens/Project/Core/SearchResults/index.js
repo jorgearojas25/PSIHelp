@@ -9,12 +9,12 @@ import {
   Pressable,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
-import CardList from '../../Components/CardList';
-import SpecialtyIcon from '../../Components/SpecialtyIcon';
-import {config} from '../../config';
-import docs from '../../mocks/docs';
-import styles from '../../styles';
-import theme from '../../styles/theme';
+import CardList from '../../../../Components/CardList';
+import SpecialtyIcon from '../../../../Components/SpecialtyIcon';
+import config from '../../../../config';
+import docs from '../../../../mocks/docs';
+import styles from '../../../../styles';
+import theme from '../../../../styles/theme';
 
 const SearchResultsScreen = () => {
   const [activeTagIndex, setActiveTagIndex] = React.useState(0);

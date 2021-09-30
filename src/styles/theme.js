@@ -11,13 +11,23 @@ const palette = {
   favs: '#FF0000',
   white: '#FFFFFF',
   fontsContrast: '#FAFAFA',
+  fontPrimary: '#0EBE7F',
 };
 
 const fonts = StyleSheet.create({
+  font24Title: {
+    fontSize: 24,
+    fontWeight: '500',
+  },
   font18Bold: {
     fontSize: 18,
     lineHeight: 21,
     fontWeight: 'bold',
+  },
+  font18Contrast: {
+    fontWeight: '500',
+    fontSize: 18,
+    color: palette.white,
   },
   font12: {
     fontSize: 12,
@@ -49,12 +59,30 @@ const fonts = StyleSheet.create({
     lineHeight: 24,
     color: palette.contrast,
   },
+  font14Primary: {
+    fontSize: 14,
+    color: palette.fontPrimary,
+    fontWeight: '600',
+  },
+  font14: {
+    fontSize: 14,
+    color: palette.contrast,
+  },
   font24WhiteBold: {
     fontWeight: 'bold',
     fontSize: 20,
     lineHeight: 24,
     color: palette.fontsContrast,
     width: '90%',
+  },
+  font16Light: {
+    fontWeight: '300',
+    fontSize: 16,
+  },
+  font16LightContrast: {
+    fontWeight: '300',
+    fontSize: 16,
+    color: palette.fontsContrast,
   },
 });
 
