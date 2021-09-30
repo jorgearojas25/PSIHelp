@@ -4,6 +4,7 @@ import config from '../../config';
 const LOGIN = 'psihelp/user/LOGIN';
 const REGISTER_USER = 'psihelp/user/REGISTER_USER';
 const CLEAN_USER = 'psihelp/user/CLEAN_USER';
+const USER_SCHEDULE = 'psihelp/user/DOCTOR_SCHEDULE';
 
 // REDUCER
 
@@ -13,6 +14,8 @@ export default function reducer(state = {}, action = {}) {
       return {...state, user: action.payload};
     case REGISTER_USER:
       return {...state, user: action.payload};
+    case USER_SCHEDULE:
+      return {...state, userAgenda: action.payload};
     case CLEAN_USER:
       return {};
     default:
@@ -99,6 +102,53 @@ export const registerDoctor =
       .catch(err => {
         console.log(`[LOGIN] ${err}`);
         dispatch({type: LOGIN, payload: 'error'});
+      });
+  };
+
+export const searchUserAgenda = filter => dispatch => {
+  const uri = config.API_URI + config.SERVICES.agendaFilter;
+  fetch(uri, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json', Accept: 'application/json'},
+    body: JSON.stringify(filter),
+  })
+    .then(response => response.json())
+    .then(data =>
+      data.result || data.entities
+        ? dispatch({type: USER_SCHEDULE, payload: data.entities})
+        : dispatch({type: USER_SCHEDULE, payload: 'error'}),
+    )
+    .catch(err => {
+      console.log(`[DOCTOR_SCHEDULE] ${err}`);
+      dispatch({type: USER_SCHEDULE, payload: 'error'});
+    });
+};
+
+export const saveSchedule =
+  ({idUser, IdDoc: idDoc, fecha, hora}) =>
+  dispatch => {
+    const filter = {
+      Id_usuario: idUser,
+      Id_doctor: idDoc,
+      Fecha: fecha,
+      Hora: hora,
+      Bloqueado: true,
+    };
+    const uri = config.API_URI + config.SERVICES.agenda;
+    fetch(uri, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', Accept: 'application/json'},
+      body: JSON.stringify(filter),
+    })
+      .then(response => response.json())
+      .then(data =>
+        data.result || data.entities
+          ? dispatch({type: USER_SCHEDULE, payload: data.entities})
+          : dispatch({type: USER_SCHEDULE, payload: 'error'}),
+      )
+      .catch(err => {
+        console.log(`[DOCTOR_SCHEDULE] ${err}`);
+        dispatch({type: USER_SCHEDULE, payload: 'error'});
       });
   };
 

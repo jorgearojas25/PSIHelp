@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import {View, Text, Image} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import {View, Text, Pressable} from 'react-native';
 import config from '../../config';
 import styles from '../../styles';
+import {useNavigation} from '@react-navigation/native';
 
 // components
 import CardLarge from './CardLarge';
@@ -10,6 +10,7 @@ import CardSmall from './CardSmall';
 import CardFull from './CardFull';
 
 const Card = ({
+  item,
   typeView,
   id,
   photo,
@@ -20,46 +21,58 @@ const Card = ({
   specialty,
   price,
 }) => {
+  const navigation = useNavigation();
+
+  const navigateSchedule = React.useCallback(() => {
+    navigation.navigate('Schedule', item);
+  }, [navigation]);
+
   if (config.CARD_TYPES.large === typeView) {
     return (
-      <CardLarge
-        id={id}
-        key={id}
-        name={name}
-        photo={photo}
-        specialty={specialty}
-        stars={stars}
-      />
+      <Pressable onPress={navigateSchedule}>
+        <CardLarge
+          id={id}
+          key={id}
+          name={name}
+          photo={photo}
+          specialty={specialty}
+          stars={stars}
+        />
+      </Pressable>
     );
   }
 
   if (config.CARD_TYPES.small === typeView) {
     return (
-      <CardSmall
-        id={id}
-        isFav={isFav}
-        key={id}
-        name={name}
-        photo={photo}
-        specialty={specialty}
-        stars={stars}
-        price={price}
-      />
+      <Pressable onPress={navigateSchedule}>
+        <CardSmall
+          id={id}
+          isFav={isFav}
+          key={id}
+          name={name}
+          photo={photo}
+          specialty={specialty}
+          stars={stars}
+          price={price}
+        />
+      </Pressable>
     );
   }
   if (config.CARD_TYPES.full === typeView) {
     return (
-      <CardFull
-        id={id}
-        isFav={isFav}
-        key={id}
-        name={name}
-        photo={photo}
-        specialty={specialty}
-        stars={stars}
-        price={price}
-        dates={dates}
-      />
+      <Pressable onPress={navigateSchedule}>
+        <CardFull
+          id={id}
+          isFav={isFav}
+          key={id}
+          name={name}
+          photo={photo}
+          specialty={specialty}
+          stars={stars}
+          price={price}
+          dates={dates}
+        />
+      </Pressable>
     );
   }
 

@@ -84,6 +84,36 @@ const fonts = StyleSheet.create({
     fontSize: 16,
     color: palette.fontsContrast,
   },
+  font16Heavy: {
+    fontWeight: 'bold',
+    fontSize: 16,
+    color: palette.fontsDetails,
+  },
+  font16HeavyContrast: {
+    fontWeight: 'bold',
+    fontSize: 16,
+    color: palette.fontsContrast,
+  },
+  font10Light: {
+    fontWeight: '300',
+    fontSize: 10,
+    color: palette.fontsDetails,
+  },
+  font10LightContrast: {
+    fontWeight: '300',
+    fontSize: 10,
+    color: palette.fontsContrast,
+  },
+  font13Primary: {
+    fontSize: 13,
+    color: palette.primary,
+    fontWeight: '800',
+  },
+  font13PrimaryContrast: {
+    fontSize: 13,
+    color: palette.primary,
+    fontWeight: '800',
+  },
 });
 
 const theme = {

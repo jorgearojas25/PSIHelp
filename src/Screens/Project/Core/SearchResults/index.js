@@ -16,6 +16,7 @@ import styles from '../../../../styles';
 import theme from '../../../../styles/theme';
 import {useSelector, useDispatch} from 'react-redux';
 import {cleanSearch, filter} from '../../../../store/reducers/searchReducer';
+import ScreenHeader from '../../../../Components/ScreenHeader';
 
 const SearchResultsScreen = ({navigation}) => {
   const dispatch = useDispatch();
@@ -32,6 +33,11 @@ const SearchResultsScreen = ({navigation}) => {
     );
     setFilterWords('');
   }, [filterWords]);
+
+  const goBackScreen = React.useCallback(() => {
+    dispatch(cleanSearch());
+    navigation.goBack();
+  }, []);
 
   const tags = React.useMemo(
     () => (
@@ -84,29 +90,7 @@ const SearchResultsScreen = ({navigation}) => {
         {flex: 1, backgroundColor: styles.theme.colors.backgrounds},
       ]}>
       <View>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <Pressable
-            onPress={() => {
-              dispatch(cleanSearch());
-              navigation.goBack();
-            }}
-            style={{
-              backgroundColor: styles.theme.colors.white,
-              width: 30,
-              height: 30,
-              borderRadius: 10,
-              justifyContent: 'center',
-              alignItems: 'center',
-              marginRight: 15,
-            }}>
-            <Icon
-              name="left"
-              color={styles.theme.colors.fontsDetails}
-              size={15}
-            />
-          </Pressable>
-          <Text style={styles.theme.fonts.font18Bold}>Home</Text>
-        </View>
+        <ScreenHeader onPress={goBackScreen} nameScreen="Home" />
         <View>
           <TextInput
             placeholder="Buscar"

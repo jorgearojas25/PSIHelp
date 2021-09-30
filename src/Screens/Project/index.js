@@ -14,7 +14,7 @@ const MainApp = ({navigation}) => {
   const Drawer = createDrawerNavigator();
   const dispatch = useDispatch();
 
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     const backAction = () => {
       Alert.alert('Espera!', 'Seguro que deseas cerrar sesion?', [
         {

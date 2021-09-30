@@ -6,6 +6,7 @@ import theme from '../../../styles/theme';
 // components
 import HomeScreen from './Home';
 import SearchResultsScreen from './SearchResults';
+import Schedule from './Schedule';
 import TabBar from '../../../Components/TabBar';
 
 const CoreApp = () => {
@@ -30,6 +31,13 @@ const CoreApp = () => {
       <Tab.Screen
         name="SearchResults"
         component={SearchResultsScreen}
+        options={{
+          hide: true,
+        }}
+      />
+      <Tab.Screen
+        name="Schedule"
+        component={Schedule}
         options={{
           hide: true,
         }}

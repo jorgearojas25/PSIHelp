@@ -64,6 +64,46 @@ const state = StyleSheet.create({
 
     elevation: 4,
   },
+  dayActive: {
+    width: 150,
+    height: 64,
+    alignContent: 'center',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+    backgroundColor: theme.colors.primary,
+    marginRight: 15,
+    borderRadius: 12,
+  },
+  dayInActive: {
+    width: 150,
+    height: 64,
+    alignContent: 'center',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+    backgroundColor: theme.colors.fontsContrast,
+    marginRight: 15,
+    borderRadius: 12,
+  },
+  timeActive: {
+    width: '22%',
+    marginLeft: '2%',
+    marginTop: '2%',
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: theme.colors.secondary,
+    borderRadius: 8,
+  },
+  timeInActive: {
+    width: '22%',
+    marginLeft: '2%',
+    marginTop: '2%',
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: theme.colors.fontsContrast,
+    borderRadius: 8,
+  },
 });
 
 export default state;
