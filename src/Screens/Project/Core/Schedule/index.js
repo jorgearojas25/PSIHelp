@@ -7,6 +7,7 @@ import ScreenHeader from '../../../../Components/ScreenHeader';
 import config from '../../../../config';
 import styles from '../../../../styles';
 import scheduleUtils from '../../../../utils/scheduleUtils';
+import {saveSchedule} from '../../../../store/reducers/userReducer';
 
 const Schedule = ({navigation, route}) => {
   const dispatch = useDispatch();

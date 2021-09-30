@@ -14,7 +14,7 @@ const getWeekDays = (userSchedule, docSchedule) => {
       const horas = isToday
         ? [...config.SCHEDULE]
             .reverse()
-            .splice(0, hora - 9)
+            .splice(0, hora - 15)
             .reverse()
         : [...config.SCHEDULE];
       return {Fecha: fecha, Horas: horas};

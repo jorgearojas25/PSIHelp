@@ -27,8 +27,8 @@ const DayPicker = ({Fecha, isActive, Horas, onPress}) => {
             ? styles.theme.fonts.font10LightContrast
             : styles.theme.fonts.font10Light
         }>
-        {Horas.lenght > 0
-          ? `${Horas.lenght} espacios disponibles`
+        {Horas.length > 0
+          ? `${Horas.length} espacios disponibles`
           : 'No hay espacios disponibles'}
       </Text>
     </Pressable>
