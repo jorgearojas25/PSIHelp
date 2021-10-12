@@ -1,5 +1,5 @@
 const config = {
-  API_URI: 'http://localhost:5500',
+  API_URI: 'https://psi-help.herokuapp.com',
   SERVICES: {
     especialidad: '/especialidad/',
     usuario: '/usuario/',
