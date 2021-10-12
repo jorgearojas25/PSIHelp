@@ -8,6 +8,9 @@ import HomeScreen from './Home';
 import SearchResultsScreen from './SearchResults';
 import Schedule from './Schedule';
 import TabBar from '../../../Components/TabBar';
+import AgendaScren from './Agenda';
+import HistoryScreen from './History';
+import CommentsScreen from './Comments';
 
 const CoreApp = () => {
   const Tab = createBottomTabNavigator();
@@ -43,15 +46,22 @@ const CoreApp = () => {
         }}
       />
       <Tab.Screen
+        name="Comments"
+        component={CommentsScreen}
+        options={{
+          hide: true,
+        }}
+      />
+      <Tab.Screen
         name="Favorites"
-        component={SearchResultsScreen}
+        component={HistoryScreen}
         options={{
           myIcon: {color: theme.colors.ternary, name: 'heart', size: 28},
         }}
       />
       <Tab.Screen
-        name="OnBoarding"
-        component={SearchResultsScreen}
+        name="Agenda"
+        component={AgendaScren}
         options={{
           myIcon: {color: theme.colors.ternary, name: 'book', size: 28},
         }}

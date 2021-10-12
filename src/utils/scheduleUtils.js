@@ -38,6 +38,24 @@ const getWeekDays = (userSchedule, docSchedule) => {
     week = thisArray;
   }
 
+  if (docSchedule) {
+    let thisArray = [];
+
+    week.forEach(day =>
+      thisArray.push({
+        ...day,
+        Horas: day.Horas.map(hora => ({
+          ...hora,
+          Bloqueado: docSchedule.some(
+            sch => sch.Fecha === day.Fecha && sch.Hora === hora.hora,
+          ),
+        })),
+      }),
+    );
+
+    week = thisArray;
+  }
+
   return week;
 };
 

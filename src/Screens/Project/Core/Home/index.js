@@ -16,6 +16,7 @@ import styles from '../../../../styles';
 import theme from '../../../../styles/theme';
 import {useSelector, useDispatch} from 'react-redux';
 import {filter} from '../../../../store/reducers/searchReducer';
+import {searchUserAgenda} from '../../../../store/reducers/userReducer';
 
 const HomeScreen = ({navigation}) => {
   const dispatch = useDispatch();
@@ -25,10 +26,15 @@ const HomeScreen = ({navigation}) => {
     especialidades: state.dataReducer.especialidades,
     top: state.searchReducer.top,
   }));
-  React.useEffect(
-    () => console.log(user, searchList, especialidades, top),
-    [user, searchList, especialidades, top],
-  );
+  // React.useEffect(
+  //   () => console.log(user, searchList, especialidades, top),
+  //   [user, searchList, especialidades, top],
+  // );
+
+  React.useLayoutEffect(() => {
+    dispatch(searchUserAgenda({Id_usuario: user?._id}));
+  }, [user]);
+
   const [filterWords, setFilterWords] = React.useState('');
   const onSearch = React.useCallback(() => {
     dispatch(

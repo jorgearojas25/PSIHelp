@@ -14,6 +14,7 @@ const DatePicker = ({doctor}) => {
   const [dia, setDia] = React.useState('');
   const [horas, setHoras] = React.useState([]);
   const [update, setUpdate] = React.useState(false);
+  const [aviableDates, setAviableDates] = React.useState([]);
 
   const {user, docAgenda, userAgenda} = useSelector(state => ({
     user: state.userReducer.user,
@@ -21,11 +22,11 @@ const DatePicker = ({doctor}) => {
     userAgenda: state?.userReducer?.userAgenda,
   }));
 
-  const aviableDates = React.useMemo(() => {
+  React.useEffect(() => {
     const dates = scheduleUtils.getWeekDays(userAgenda, docAgenda);
-
-    setHoras(dates.find(date => date.Fecha === dia).Horas);
-    return dates;
+    const newHours = dates.find(date => date.Fecha === dia);
+    setHoras(newHours?.Horas || []);
+    setAviableDates(dates);
   }, [userAgenda, docAgenda, update]);
 
   React.useEffect(() => {
@@ -42,6 +43,8 @@ const DatePicker = ({doctor}) => {
         hora: hora,
       }),
     );
+    dispatch(searchDocAgenda({Id_doctor: doctor._id}));
+    dispatch(searchUserAgenda({Id_usuario: user?._id}));
     setUpdate(!update);
   };
 
