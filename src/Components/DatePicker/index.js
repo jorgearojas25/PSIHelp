@@ -1,45 +1,75 @@
 import React from 'react';
-import {View, Text, Pressable, Alert} from 'react-native';
+import {View, Text, Alert} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
+import {useDispatch, useSelector} from 'react-redux';
+import {searchDocAgenda} from '../../store/reducers/searchReducer';
+import {saveSchedule, searchUserAgenda} from '../../store/reducers/userReducer';
 import styles from '../../styles';
 import scheduleUtils from '../../utils/scheduleUtils';
 import DayPicker from './DayPicker';
 import TimePicker from './TimePicker';
 
-const DatePicker = () => {
+const DatePicker = ({doctor}) => {
+  const dispatch = useDispatch();
   const [dia, setDia] = React.useState('');
   const [horas, setHoras] = React.useState([]);
-  const aviableDates = React.useMemo(() => {
-    return scheduleUtils.getWeekDays();
-  }, []);
+  const [update, setUpdate] = React.useState(false);
 
-  const onSelectTime = () =>
+  const {user, docAgenda, userAgenda} = useSelector(state => ({
+    user: state.userReducer.user,
+    docAgenda: state?.searchReducer?.docAgenda,
+    userAgenda: state?.userReducer?.userAgenda,
+  }));
+
+  const aviableDates = React.useMemo(() => {
+    const dates = scheduleUtils.getWeekDays(userAgenda, docAgenda);
+
+    setHoras(dates.find(date => date.Fecha === dia).Horas);
+    return dates;
+  }, [userAgenda, docAgenda, update]);
+
+  React.useEffect(() => {
+    dispatch(searchDocAgenda({Id_doctor: doctor._id}));
+    dispatch(searchUserAgenda({Id_usuario: user?._id}));
+  }, [user, doctor, update]);
+
+  const handleSchedule = hora => {
+    dispatch(
+      saveSchedule({
+        idUser: user._id,
+        idDoc: doctor._id,
+        fecha: dia,
+        hora: hora,
+      }),
+    );
+    setUpdate(!update);
+  };
+
+  const onSelectTime = hora => {
     Alert.alert('Confirmacion', 'Deseas reservar este espacio', [
       {
         text: 'Cancel',
-        onPress: () => console.log('Cancel Pressed'),
+        onPress: () => console.log(dia, hora),
         style: 'cancel',
       },
-      {text: 'OK', onPress: () => console.log('OK Pressed')},
+      {text: 'OK', onPress: () => handleSchedule(hora)},
     ]);
+  };
 
-  const keyExtractor = React.useCallback(item => {
+  const keyExtractor = item => {
     item.id;
-  }, []);
+  };
 
-  const renderItem = React.useCallback(
-    item => (
-      <DayPicker
-        Fecha={item.item.Fecha}
-        isActive={item.item.Fecha === dia}
-        Horas={item.item.Horas}
-        onPress={() => {
-          setDia(item.item.Fecha);
-          setHoras(item.item.Horas);
-        }}
-      />
-    ),
-    [dia],
+  const renderItem = item => (
+    <DayPicker
+      Fecha={item.item.Fecha}
+      isActive={item.item.Fecha === dia}
+      Horas={item.item.Horas}
+      onPress={() => {
+        setDia(item.item.Fecha);
+        setHoras(item.item.Horas);
+      }}
+    />
   );
 
   return (

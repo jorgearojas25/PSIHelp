@@ -4,9 +4,8 @@ import styles from '../../styles';
 
 const DayPicker = ({Fecha, isActive, Horas, onPress}) => {
   const aviableDays = React.useMemo(
-    // () => Horas.filter(hora => !hora.Bloqueado),
-    () => true,
-    [],
+    () => Horas.filter(hora => !hora.Bloqueado),
+    [Horas],
   );
 
   return (
@@ -27,8 +26,8 @@ const DayPicker = ({Fecha, isActive, Horas, onPress}) => {
             ? styles.theme.fonts.font10LightContrast
             : styles.theme.fonts.font10Light
         }>
-        {Horas.length > 0
-          ? `${Horas.length} espacios disponibles`
+        {aviableDays.length > 0
+          ? `${aviableDays.length} espacios disponibles`
           : 'No hay espacios disponibles'}
       </Text>
     </Pressable>

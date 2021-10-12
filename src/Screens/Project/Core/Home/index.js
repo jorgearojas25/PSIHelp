@@ -25,6 +25,10 @@ const HomeScreen = ({navigation}) => {
     especialidades: state.dataReducer.especialidades,
     top: state.searchReducer.top,
   }));
+  React.useEffect(
+    () => console.log(user, searchList, especialidades, top),
+    [user, searchList, especialidades, top],
+  );
   const [filterWords, setFilterWords] = React.useState('');
   const onSearch = React.useCallback(() => {
     dispatch(

@@ -1,18 +1,13 @@
-import React, {useLayoutEffect} from 'react';
-import {View, Text, BackHandler, Pressable} from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
+import React from 'react';
+import {View, BackHandler} from 'react-native';
 import CardFull from '../../../../Components/Card/CardFull';
 import DatePicker from '../../../../Components/DatePicker';
 import ScreenHeader from '../../../../Components/ScreenHeader';
-import config from '../../../../config';
 import styles from '../../../../styles';
-import scheduleUtils from '../../../../utils/scheduleUtils';
-import {saveSchedule} from '../../../../store/reducers/userReducer';
 
 const Schedule = ({navigation, route}) => {
-  const dispatch = useDispatch();
   const [doctor, setDoctor] = React.useState(route.params);
-  const {user} = useSelector(state => ({user: state.userReducer.user}));
+
   React.useEffect(() => {
     const backAction = () => {
       navigation.goBack();
@@ -29,9 +24,7 @@ const Schedule = ({navigation, route}) => {
 
   React.useLayoutEffect(() => {
     setDoctor(route.params);
-  });
-
-  const calculateSchedules = React.useMemo(() => {}, []);
+  }, [route]);
 
   return (
     <View
@@ -57,7 +50,7 @@ const Schedule = ({navigation, route}) => {
         />
       </View>
       <View>
-        <DatePicker />
+        <DatePicker doctor={doctor} />
       </View>
     </View>
   );

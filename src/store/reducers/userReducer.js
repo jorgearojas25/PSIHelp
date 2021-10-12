@@ -5,6 +5,7 @@ const LOGIN = 'psihelp/user/LOGIN';
 const REGISTER_USER = 'psihelp/user/REGISTER_USER';
 const CLEAN_USER = 'psihelp/user/CLEAN_USER';
 const USER_SCHEDULE = 'psihelp/user/DOCTOR_SCHEDULE';
+const SAVE_AGENDA = 'psihelp/user/SAVE_AGENDA';
 
 // REDUCER
 
@@ -17,7 +18,10 @@ export default function reducer(state = {}, action = {}) {
     case USER_SCHEDULE:
       return {...state, userAgenda: action.payload};
     case CLEAN_USER:
+      console.log('here');
       return {};
+    case SAVE_AGENDA:
+      return state;
     default:
       return state;
   }
@@ -119,19 +123,19 @@ export const searchUserAgenda = filter => dispatch => {
         : dispatch({type: USER_SCHEDULE, payload: 'error'}),
     )
     .catch(err => {
-      console.log(`[DOCTOR_SCHEDULE] ${err}`);
+      console.log(`[USER_SCHEDULE] ${err}`);
       dispatch({type: USER_SCHEDULE, payload: 'error'});
     });
 };
 
 export const saveSchedule =
-  ({idUser, IdDoc: idDoc, fecha, hora}) =>
+  ({idUser, idDoc, fecha, hora}) =>
   dispatch => {
     const filter = {
       Id_usuario: idUser,
       Id_doctor: idDoc,
       Fecha: fecha,
-      Hora: hora,
+      Hora: hora.hora,
       Bloqueado: true,
     };
     const uri = config.API_URI + config.SERVICES.agenda;
@@ -143,12 +147,12 @@ export const saveSchedule =
       .then(response => response.json())
       .then(data =>
         data.result || data.entities
-          ? dispatch({type: USER_SCHEDULE, payload: data.entities})
-          : dispatch({type: USER_SCHEDULE, payload: 'error'}),
+          ? dispatch({type: SAVE_AGENDA, payload: data.entities})
+          : dispatch({type: SAVE_AGENDA, payload: 'error'}),
       )
       .catch(err => {
         console.log(`[DOCTOR_SCHEDULE] ${err}`);
-        dispatch({type: USER_SCHEDULE, payload: 'error'});
+        dispatch({type: SAVE_AGENDA, payload: 'error'});
       });
   };
 

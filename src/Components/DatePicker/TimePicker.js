@@ -11,7 +11,7 @@ const TimePicker = ({Horas, onPress}) => {
             hora.Bloqueado ? styles.state.timeActive : styles.state.timeInActive
           }
           key={i}
-          onPress={onPress}>
+          onPress={() => (!hora.Bloqueado ? onPress(hora) : null)}>
           <Text
             style={
               hora.Bloqueado

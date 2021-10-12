@@ -21,26 +21,22 @@ const getWeekDays = (userSchedule, docSchedule) => {
     });
 
   if (userSchedule) {
-    week.map(day =>
-      userSchedule.find(
-        sche => sche.Fecha === day.Fecha && day.Horas.includes(sche.Hora),
-      )
-        ? {...day}
-        : {...day},
-    );
-  }
+    let thisArray = [];
 
-  if (docSchedule) {
-    week.map(day =>
-      docSchedule.find(
-        sche => sche.Fecha === day.Fecha && day.Horas.includes(sche.Hora),
-      )
-        ? {...day}
-        : {...day},
+    week.forEach(day =>
+      thisArray.push({
+        ...day,
+        Horas: day.Horas.map(hora => ({
+          ...hora,
+          Bloqueado: userSchedule.some(
+            sch => sch.Fecha === day.Fecha && sch.Hora === hora.hora,
+          ),
+        })),
+      }),
     );
-  }
 
-  console.log(week);
+    week = thisArray;
+  }
 
   return week;
 };
